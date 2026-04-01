@@ -9,6 +9,8 @@
 ```bash
 cd /path/to/My-Dotfiles
 stow --target="$HOME" hypr waybar kitty rofi sfu-schedule fastfetch ags
+# экран входа (тема SDDM в /usr/share — нужен root, только с --no-folding):
+# sudo stow --no-folding --target=/ sddm
 ```
 
 Поставить только часть пакетов — перечислите нужные имена.  
@@ -31,12 +33,9 @@ stow -n --target="$HOME" hypr waybar
 | `sfu-schedule` | Расписание SFU: код + `schedule.json` без `target/`, `.venv`, `*.7z` |
 | `fastfetch` | Быстрый вывод инфо о системе |
 | `ags` | Минимальная папка конфига AGS |
+| `sddm` | Тема **`simple_sddm_2`** для SDDM (QML + ассеты + **видео-фон** `Cyberpunk_2077.mp4`) → **`sudo stow --no-folding --target=/ sddm`**. Подробности в [`sddm/README.md`](sddm/README.md). |
 
 Исключено намеренно: виртуальные окружения, Rust `target/`, архивы `*.7z`, вложенный `.git` у расписания.
-
-## SDDM
-
-Готовых пользовательских файлов темы в `~/.config` обычно нет: темы ставятся в `/usr/share/sddm/themes/`, drop-in настройки — в `/etc/sddm.conf.d/` (нужны права root). Этот репозиторий **не** содержит пакет Stow для SDDM; при кастомной теме скопируйте её отдельно или оформите свой пакет с тем же приёмом (`sddm/.usr/share/...` и `stow --target=/` только если осознанно линкуете в системные пути).
 
 ## Примечания
 
