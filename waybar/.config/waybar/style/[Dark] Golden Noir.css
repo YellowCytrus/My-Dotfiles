@@ -1,0 +1,246 @@
+
+/* === ОТСТУПЫ СЛЕВА И СПРАВА === */
+#custom-left-padding,
+#custom-right-padding {
+    min-width: 12px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: transparent;
+}
+
+/* Убираем лишние отступы у крайних элементов */
+#workspaces,
+#tray {
+    margin: 0;
+    padding: 0;
+}
+
+/* === ГЛОБАЛЬНЫЕ СТИЛИ === */
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    color: #c0caf5;
+    background: transparent;
+    transition: background 0.3s ease, color 0.3s ease, opacity 0.2s ease, box-shadow 0.3s ease;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#waybar {
+    background: rgba(26, 27, 38, 0.85);
+    border-radius: 5px;
+    border: 1px solid #565f89;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    margin: 5px;
+    min-height: 36px;
+}
+
+/* === КНОПКИ И МОДУЛИ === */
+button,
+#clock, #battery, #network, #bluetooth, #pulseaudio, #cpu, #memory, #tray, #custom-power, #custom-notification, #custom-schedule {
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    min-width: 40px;
+    background: #3e4451;
+    color: #c0caf5;
+    opacity: 0.9;
+}
+
+button:hover,
+#clock:hover, #battery:hover, #network:hover, #bluetooth:hover,
+#pulseaudio:hover, #cpu:hover, #memory:hover, #custom-power:hover, #custom-notification:hover, #custom-schedule:hover {
+    background: rgba(255, 255, 255, 0.12);
+    opacity: 1.0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* === РАБОЧИЕ СТОЛЫ === */
+#workspaces {
+    padding: 0 4px;
+    margin: 0 2px;
+}
+
+#workspaces button {
+    min-width: 36px;
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    background: transparent;
+    color: #565f89;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+#workspaces button:hover {
+    background: rgba(122, 162, 247, 0.15);
+    color: #7aa2f7;
+}
+
+#workspaces button.active {
+    background: rgba(122, 162, 247, 0.25);
+    color: #7aa2f7;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    color: #f7768e;
+    animation: pulse 1.5s infinite;
+}
+
+/* === РАЗДЕЛИТЕЛЬ === */
+#custom-separator {
+    color: #565f89;
+    padding: 0 8px;
+    font-weight: 100;
+    opacity: 0.7;
+}
+
+/* === ЧАСЫ === */
+#clock {
+    background: #3e4451;
+    color: #c0caf5;
+    font-weight: 600;
+    min-width: 80px;
+    opacity: 0.9;
+}
+
+/* === СЕТЬ === */
+#network.good { background: #98c379; color: #282c34; }
+#network.medium { background: #e5c07b; color: #282c34; }
+#network.bad { background: #e06c75; color: #ffffff; }
+#network.disconnected { background: #e06c75; color: #ffffff; }
+
+/* === ДРУГИЕ СОСТОЯНИЯ === */
+#battery.charging { background: #98c379; color: #282c34; }
+#battery.warning { background: #e5c07b; color: #282c34; }
+#battery.critical { background: #e06c75; color: #ffffff; }
+#bluetooth.connected { background: #61afef; color: #282c34; }
+#pulseaudio.muted { background: #5c6370; color: #abb2bf; }
+#cpu.critical { background: #e06c75; color: #ffffff; }
+#custom-power:hover { background: #e06c75; color: #ffffff; }
+#tray { padding: 0 8px; }
+
+/* === УВЕДОМЛЕНИЯ (SWAYNC) === */
+#custom-notification {
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    background: #3e4451;
+    color: #c0caf5;
+    font-size: 13px;
+    min-width: 40px;
+    opacity: 0.9;
+    transition: background 0.3s ease, color 0.3s ease, opacity 0.2s ease, box-shadow 0.3s ease;
+}
+
+#custom-notification:hover {
+    background: rgba(255, 255, 255, 0.12);
+    opacity: 1.0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#custom-notification.notification {
+    color: #98c379;
+    font-weight: 600;
+}
+
+#custom-notification.dnd-notification {
+    color: #f7768e;
+    font-weight: 600;
+}
+
+#custom-notification.dnd-none,
+#custom-notification.none {
+    color: #565f89;
+}
+
+#custom-notification.inhibited-notification,
+#custom-notification.inhibited-none,
+#custom-notification.dnd-inhibited-notification,
+#custom-notification.dnd-inhibited-none {
+    color: #e5c07b;
+}
+
+/* === ПОДСКАЗКИ === */
+tooltip {
+    background: #1a1b26;
+    color: #c0caf5;
+    border: 1px solid #565f89;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    opacity: 1.0;
+}
+
+tooltip label {
+    padding: 0;
+    margin: 0;
+    color: #c0caf5;
+}
+
+/* === МЕНЮ === */
+menu {
+    background: #1a1b26;
+    border: 1px solid #565f89;
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+menu menuitem {
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 2px 4px;
+    color: #c0caf5;
+    background: transparent;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+menu menuitem:hover {
+    background: #7aa2f7;
+    color: #1a1b26;
+    font-weight: 600;
+}
+
+menu separator {
+    background: #565f89;
+    margin: 4px 8px;
+}
+
+
+/* === БАТАРЕЯ === */
+/* Более специфичные селекторы */
+#waybar widget#battery {
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    min-width: 60px;
+    background: #3e4451;
+    color: #c0caf5;
+    font-weight: 600;
+}
+
+#waybar widget#battery.good {
+    background: #3e4451;
+    color: #98c379;
+}
+
+#waybar widget#battery.warning {
+    background: #e5c07b;
+    color: #1a1b26;
+}
+
+#waybar widget#battery.critical {
+    background: #e06c75;
+    color: #ffffff;
+}
+
+#waybar widget#battery.charging {
+    background: #98c379;
+    color: #1a1b26;
+}

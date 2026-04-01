@@ -1,0 +1,360 @@
+/* ═══════════════════════════════════════════════════════
+   Portal 2 / Aperture Science — Waybar Theme v2
+   Floating bar with grouped modules
+   ═══════════════════════════════════════════════════════ */
+
+/* === GLOBALS === */
+* {
+    font-family: "JetBrainsMono NF", "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: #d0d0e0;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+/* === BAR === */
+#waybar {
+    background: rgba(13, 14, 26, 0.82);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 161, 228, 0.15);
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.4),
+        0 0 1px rgba(0, 161, 228, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    min-height: 38px;
+}
+
+/* === MODULE GROUPS (pills) === */
+#group-hardware,
+#group-connectivity,
+#group-controls {
+    background: rgba(26, 27, 46, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(42, 43, 69, 0.8);
+    margin: 4px 3px;
+    padding: 0 2px;
+}
+
+#group-hardware:hover,
+#group-connectivity:hover,
+#group-controls:hover {
+    background: rgba(26, 27, 46, 0.85);
+    border-color: rgba(0, 161, 228, 0.2);
+}
+
+/* === BASE MODULE STYLE === */
+#cpu, #memory, #temperature,
+#pulseaudio, #backlight, #network, #bluetooth,
+#battery, #custom-idle-toggle, #custom-notification, #custom-power {
+    padding: 0 8px;
+    margin: 0;
+    border-radius: 6px;
+    min-width: 20px;
+    color: #9a9ab0;
+}
+
+#cpu, #memory {
+    min-width: 58px;
+}
+
+#pulseaudio {
+    min-width: 62px;
+}
+
+#battery {
+    min-width: 62px;
+}
+
+#temperature {
+    min-width: 48px;
+}
+
+#backlight {
+    min-width: 58px;
+}
+
+#network {
+    min-width: 48px;
+}
+
+#cpu:hover, #memory:hover, #temperature:hover,
+#pulseaudio:hover, #backlight:hover, #network:hover, #bluetooth:hover,
+#battery:hover, #custom-idle-toggle:hover, #custom-notification:hover {
+    background: rgba(0, 161, 228, 0.12);
+    color: #00a1e4;
+}
+
+/* === APERTURE LOGO === */
+#custom-aperture {
+    color: #00a1e4;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 14px 0 12px;
+    margin: 0;
+    text-shadow: 0 0 8px rgba(0, 161, 228, 0.4);
+}
+
+#custom-aperture:hover {
+    color: #ff6a00;
+    text-shadow: 0 0 12px rgba(255, 106, 0, 0.5);
+}
+
+/* === WORKSPACES === */
+#workspaces {
+    padding: 0 4px;
+    margin: 3px 4px;
+}
+
+#workspaces button {
+    min-width: 28px;
+    padding: 0 6px;
+    margin: 2px 1px;
+    border-radius: 6px;
+    background: transparent;
+    color: #3a3a50;
+    font-weight: bold;
+    font-size: 12px;
+    border: 1px solid transparent;
+}
+
+#workspaces button.occupied {
+    color: #7a7a90;
+    border-color: rgba(42, 43, 69, 0.8);
+    background: rgba(26, 27, 46, 0.4);
+}
+
+#workspaces button:hover {
+    background: rgba(0, 161, 228, 0.15);
+    border-color: rgba(0, 161, 228, 0.3);
+    color: #00a1e4;
+}
+
+#workspaces button.active {
+    background: linear-gradient(135deg, rgba(0, 161, 228, 0.9), rgba(0, 120, 180, 0.9));
+    color: #0d0e1a;
+    border-color: #00a1e4;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0, 161, 228, 0.3);
+}
+
+#workspaces button.urgent {
+    color: #ff6a00;
+    border-color: rgba(255, 106, 0, 0.5);
+    background: rgba(255, 106, 0, 0.1);
+}
+
+/* === CLOCK === */
+#clock {
+    color: #e8e8f0;
+    font-weight: 900;
+    font-size: 22px;
+    padding: 0 16px;
+    text-shadow: 0 0 6px rgba(0, 161, 228, 0.15);
+}
+
+#clock:hover {
+    color: #00a1e4;
+    text-shadow: 0 0 10px rgba(0, 161, 228, 0.3);
+}
+
+/* === FACILITY STATUS === */
+#custom-facility-status {
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0 10px;
+    margin: 4px 3px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+#custom-facility-status.nominal {
+    color: #00e676;
+    border-color: rgba(0, 230, 118, 0.2);
+    background: rgba(0, 230, 118, 0.06);
+}
+
+#custom-facility-status.idle {
+    color: #7a7a90;
+    border-color: rgba(42, 43, 69, 0.5);
+    background: rgba(42, 43, 69, 0.3);
+}
+
+#custom-facility-status.warning {
+    color: #ffc107;
+    border-color: rgba(255, 193, 7, 0.3);
+    background: rgba(255, 193, 7, 0.06);
+}
+
+#custom-facility-status.critical {
+    color: #ff3d3d;
+    border-color: rgba(255, 61, 61, 0.3);
+    background: rgba(255, 61, 61, 0.08);
+}
+
+/* === CPU STATES === */
+#cpu.warning { color: #ffc107; }
+#cpu.critical { color: #ff3d3d; }
+
+/* === MEMORY STATES === */
+#memory.warning { color: #ffc107; }
+#memory.critical { color: #ff3d3d; }
+
+/* === TEMPERATURE === */
+#temperature { color: #7a7a90; }
+#temperature.critical {
+    color: #ff3d3d;
+}
+
+/* === AUDIO === */
+#pulseaudio.muted {
+    color: #3a3a50;
+}
+
+/* === BACKLIGHT === */
+#backlight {
+    color: #9a9ab0;
+}
+
+/* === NETWORK === */
+#network.disconnected {
+    color: #ff3d3d;
+}
+
+#network.wifi {
+    color: #9a9ab0;
+}
+
+/* === BLUETOOTH === */
+#bluetooth.connected {
+    color: #00a1e4;
+}
+
+/* === BATTERY === */
+#battery {
+    color: #9a9ab0;
+}
+
+#battery.good { color: #9a9ab0; }
+
+#battery.warning {
+    color: #ffc107;
+}
+
+#battery.critical {
+    color: #ff3d3d;
+    background: rgba(255, 61, 61, 0.08);
+}
+
+#battery.charging, #battery.plugged {
+    color: #00e676;
+}
+
+/* === IDLE TOGGLE === */
+#custom-idle-toggle {
+    font-size: 15px;
+    min-width: 20px;
+    padding: 0 6px;
+    color: #00e676;
+}
+
+#custom-idle-toggle:hover {
+    background: rgba(0, 230, 118, 0.12);
+    color: #00e676;
+}
+
+/* === NOTIFICATION === */
+#custom-notification {
+    font-size: 15px;
+    min-width: 20px;
+    padding: 0 6px;
+}
+
+#custom-notification.notification {
+    color: #00e676;
+}
+
+#custom-notification.dnd-notification {
+    color: #ff6a00;
+}
+
+#custom-notification.dnd-none,
+#custom-notification.none {
+    color: #3a3a50;
+}
+
+/* === POWER === */
+#custom-power {
+    color: #7a7a90;
+    font-size: 15px;
+    min-width: 24px;
+    padding: 0 8px;
+    margin-right: 4px;
+    border-radius: 6px;
+}
+
+#custom-power:hover {
+    background: rgba(255, 61, 61, 0.15);
+    color: #ff3d3d;
+    box-shadow: 0 0 8px rgba(255, 61, 61, 0.2);
+}
+
+/* === TRAY === */
+#tray {
+    padding: 0 8px;
+    margin: 4px 3px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* === TOOLTIPS === */
+tooltip {
+    background: rgba(13, 14, 26, 0.95);
+    color: #d0d0e0;
+    border: 1px solid rgba(0, 161, 228, 0.25);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+}
+
+tooltip label {
+    padding: 0;
+    margin: 0;
+    color: #d0d0e0;
+}
+
+/* === MENUS === */
+menu {
+    background: rgba(13, 14, 26, 0.95);
+    border: 1px solid rgba(0, 161, 228, 0.2);
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+}
+
+menu menuitem {
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 2px 3px;
+    color: #d0d0e0;
+    background: transparent;
+}
+
+menu menuitem:hover {
+    background: rgba(0, 161, 228, 0.2);
+    color: #00a1e4;
+}
+
+menu separator {
+    background: rgba(42, 43, 69, 0.5);
+    margin: 3px 8px;
+}

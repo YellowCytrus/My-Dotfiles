@@ -1,0 +1,47 @@
+@import "fonts.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    color: __ACCENT__;
+    background: transparent;
+    transition: all 0.25s ease-in-out;
+}
+
+#waybar {
+    background: rgba(26,27,38,0.85);
+    border-radius: 14px;
+    padding: 4px 10px;
+    margin: 10px 20px;
+    border: 1px solid __ACCENT_INACTIVE__;
+    box-shadow: 0 0 8px rgba(0,0,0,0.35);
+}
+
+button {
+    border: none;
+    padding: 0 8px;
+    color: __ACCENT__;
+}
+
+button:hover {
+    color: __ACCENT__;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+}
+
+#workspaces button {
+    color: __ACCENT_INACTIVE__;
+}
+
+#workspaces button.active {
+    color: __ACCENT__;
+}
+
+#workspaces button.urgent {
+    color: #f7768e;
+}
+
+#custom-separator {
+    color: __ACCENT_INACTIVE__;
+    padding: 0 8px;
+}

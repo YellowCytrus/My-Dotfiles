@@ -1,0 +1,6 @@
+{
+  "custom/colors": {
+    "exec": "sh -c 'hyprctl getoption general:col.active_border | awk \"{print $2}\"'",
+    "interval": 2
+  }
+}

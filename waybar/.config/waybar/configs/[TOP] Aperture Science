@@ -1,0 +1,239 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "spacing": 0,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+
+    "modules-left": [
+        "custom/aperture",
+        "custom/sfu_scedule",
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/facility-status",
+        "group/hardware",
+        "group/connectivity",
+        "group/controls"
+    ],
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": ["cpu", "memory", "temperature"]
+    },
+
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "backlight", "network", "bluetooth"]
+    },
+
+    "group/controls": {
+        "orientation": "horizontal",
+        "modules": ["battery", "custom/idle-toggle", "custom/notification", "custom/power"]
+    },
+
+    "custom/aperture": {
+        "format": "◉",
+        "tooltip-format": "APERTURE SCIENCE ENRICHMENT CENTER\nClick: App Launcher\nRight-click: Refresh bar",
+        "on-click": "pkill rofi || true && rofi -show drun -modi drun,filebrowser,run,window",
+        "on-click-right": "~/.config/hypr/scripts/Refresh.sh"
+    },
+
+    "custom/facility-status": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/hypr/scripts/FacilityStatus.sh",
+        "interval": 5,
+        "tooltip": true
+    },
+
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "format-alt": "{:%A  //  %d %B %Y}",
+        "tooltip-format": "<big>{:%H:%M:%S  //  %Y.%m.%d}</big>\n<tt>{calendar}</tt>",
+        "interval": 1,
+        "on-click-right": "gnome-calendar || true"
+    },
+
+    "custom/sfu_scedule": {
+        "format": "󰈙",
+        "tooltip": false,
+        "on-click": "/home/cytr/.config/sfu-schedule/target/release/sfu-schedule"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{icon} {windows}",
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "class<kitty>": "",
+            "class<firefox>": "",
+            "class<obsidian>": "󰠮",
+            "class<org.kde.kate>": "󰈙",
+            "class<thunar>": "󰉓",
+            "class<org.ime.desktop.*>": "󰭹",
+            "class<code>": "󰨞",
+            "class<cursor>": "󰨞",
+            "class<virt-manager>": "󰢹",
+            "class<steam>": "󰓓"
+        },
+        "format-icons": {
+            "1": "01", "2": "02", "3": "03",
+            "4": "04", "5": "05", "6": "06",
+            "7": "07", "8": "08", "9": "09",
+            "active": "●",
+            "default": "○",
+            "urgent": "!"
+        },
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [], "2": [], "3": [],
+            "4": [], "5": [], "6": []
+        }
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 2,
+        "tooltip-format": "CPU: {usage}%\nFreq: {avg_frequency} GHz\n{load} load",
+        "on-click": "kitty -e htop",
+        "states": {
+            "normal": 0,
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "interval": 2,
+        "tooltip-format": "RAM: {used:0.1f} GiB / {total:0.1f} GiB ({percentage}%)\nSwap: {swapUsed:0.1f} GiB / {swapTotal:0.1f} GiB",
+        "on-click": "kitty -e htop",
+        "states": {
+            "normal": 0,
+            "warning": 75,
+            "critical": 90
+        }
+    },
+
+    "temperature": {
+        "format": " {temperatureC}°",
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°",
+        "tooltip-format": "CPU Temperature: {temperatureC}°C / {temperatureF}°F",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 MUTE",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t",
+        "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
+        "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+        "tooltip-format": "Volume: {volume}%\nOutput: {desc}"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "scroll-step": 5,
+        "tooltip-format": "Brightness: {percent}%",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "network": {
+        "format-wifi": "󰖩 {signalStrength}%",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi": "NETWORK: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}/{cidr}\nUp: {bandwidthUpBytes} Down: {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "{ifname}\nIP: {ipaddr}/{cidr}\nUp: {bandwidthUpBytes} Down: {bandwidthDownBytes}",
+        "tooltip-format-disconnected": "NETWORK: OFFLINE",
+        "interval": 2,
+        "on-click": "nm-connection-editor",
+        "ignore": ["tun*", "docker*", "br-*", "lo", "virbr*", "tailscale*", "wg*", "veth*"]
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": "Bluetooth: {status}\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "  {device_alias}",
+        "tooltip-format-enumerate-connected-battery": "  {device_alias} ({device_battery_percentage}%)",
+        "on-click": "blueman-manager"
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-full": "󰂅",
+        "tooltip-format": "Battery: {capacity}%\n{timeTo}\nPower: {power:.1f}W",
+        "states": {
+            "good": 80,
+            "warning": 35,
+            "critical": 15
+        }
+    },
+
+    "tray": {
+        "spacing": 8,
+        "icon-size": 15
+    },
+
+    "custom/idle-toggle": {
+        "format": "{}",
+        "exec": "if pgrep -x hypridle > /dev/null; then echo '󰒲'; else echo '󰒳'; fi",
+        "interval": 5,
+        "on-click": "$HOME/.config/hypr/scripts/IdleToggle.sh",
+        "tooltip-format": "Toggle idle tracking"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "",
+            "dnd-notification": " ",
+            "dnd-none": "󰂛",
+            "inhibited-notification": " ",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": " ",
+            "dnd-inhibited-none": " "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "wlogout --protocol layer-shell",
+        "tooltip-format": "FACILITY SHUTDOWN PROTOCOL"
+    }
+}
