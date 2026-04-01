@@ -1,0 +1,94 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "~/.config/fastfetch/aperture-logo.txt",
+        "type": "file",
+        "color": {
+            "1": "38;2;0;161;228",
+            "2": "38;2;0;120;180"
+        },
+        "padding": {
+            "top": 0,
+            "left": 0,
+            "right": 2
+        }
+    },
+    "display": {
+        "separator": "  "
+    },
+    "modules": [
+        "break",
+        {
+            "type": "title",
+            "format": "{1}@{2}"
+        },
+        {
+            "type": "os",
+            "key": "SYSTEM "
+        },
+        {
+            "type": "wm",
+            "key": "WM     "
+        },
+        {
+            "type": "packages",
+            "format": "{} (pacman)",
+            "key": "PKGS   "
+        },
+        {
+            "type": "shell",
+            "key": "SHELL  "
+        },
+        {
+            "type": "kernel",
+            "key": "KERNEL "
+        },
+        {
+            "type": "uptime",
+            "format": "{2}h {3}m",
+            "key": "UPTIME "
+        },
+        {
+            "type": "command",
+            "key": "OS AGE ",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days"
+        },
+        {
+            "type": "cpu",
+            "key": "CPU    "
+        },
+        {
+            "type": "gpu",
+            "key": "GPU    "
+        },
+        {
+            "type": "memory",
+            "key": "MEMORY "
+        },
+        {
+            "type": "disk",
+            "key": "DISK   ",
+            "folders": "/"
+        },
+        {
+            "type": "display",
+            "key": "DISPLAY"
+        },
+        {
+            "type": "terminal",
+            "key": "TERM   "
+        },
+        "break",
+        {
+            "type": "colors",
+            "symbol": "circle"
+        },
+        "break",
+        {
+            "type": "command",
+            "key": " ",
+            "keyWidth": 0,
+            "text": "~/.config/hypr/scripts/glados-quote.sh 2>/dev/null | head -1"
+        }
+    ]
+}

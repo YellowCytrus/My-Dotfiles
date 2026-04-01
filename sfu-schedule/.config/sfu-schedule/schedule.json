@@ -1,0 +1,187 @@
+{
+  "semester_start": "2024-01-08",
+  "first_pair_time": "08:30",
+  "pair_duration_minutes": 95,
+  "break_duration_minutes": 10,
+  "long_break_after_pair": 3,
+  "long_break_duration_minutes": 35,
+  "schedule": {
+    "odd": {
+      "monday": [
+
+      ],
+      "tuesday": [
+        {
+          "pair": 1,
+          "subject": "Разработка мобильного ПО",
+          "type": "лекция",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=35902",
+          "teacher": "Кушнаренко А. В."
+        },
+        {
+          "pair": 2,
+          "subject": "Анализ больших данных",
+          "type": "лекция",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=21979",
+          "teacher": "Пахомова К. И."
+        }
+      ],
+      "wednesday": [],
+      "thursday": [
+        {
+          "pair": 1,
+          "subject": "Разработка мобильного ПО",
+          "type": "пр. занятие",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=35902",
+          "teacher": "Кушнаренко А. В."
+        },
+        {
+          "pair": 2,
+          "subject": "Разработка кроссплатформенных приложений с использованием игровых движков",
+          "type": "лекция",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=38099",
+          "teacher": "Зайцев А. С."
+        }
+      ],
+      "friday": [
+        {
+          "pair": 4,
+          "subject": "Анализ больших данных",
+          "type": "пр. занятие",
+          "room": "4-23",
+          "teacher": "Полякова А. С."
+        },
+        {
+          "pair": 5,
+          "subject": "Разработка кроссплатформенных приложений с использованием игровых движков",
+          "type": "пр. занятие",
+          "room": "4-02",
+          "teacher": "Зайцев А. С."
+        },
+        {
+          "pair": 6,
+          "subject": "Интеллектуальные системы и технологии",
+          "type": "пр. занятие",
+          "room": "4-01",
+          "teacher": "Кожин К. Д."
+        }
+      ],
+      "saturday": [
+        {
+          "pair": 4,
+          "subject": "Зеленые компетенции в различных сферах жизни и профессиональной деятельности",
+          "type": "пр. занятие",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=34040",
+          "teacher": "Красноперова П. А."
+        },
+        {
+          "pair": 5,
+          "subject": "Инструментальные средства информационных систем",
+          "type": "пр. занятие",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=22118",
+          "teacher": "Кустов Д. В."
+        },
+        {
+          "pair": 6,
+          "subject": "Инструментальные средства информационных систем",
+          "type": "лекция",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=22118",
+          "teacher": "Кустов Д. В."
+        }
+      ],
+      "sunday": []
+    },
+    "even": {
+      "monday": [
+
+      ],
+      "tuesday": [
+        {
+          "pair": 4,
+          "subject": "Английский язык для профессиональных целей",
+          "type": "пр. занятие",
+          "room": "Корпус №15, 5-21",
+          "teacher": "Думлер Н. П."
+        },
+        {
+          "pair": 5,
+          "subject": "Анализ больших данных",
+          "type": "пр. занятие",
+          "room": "4-02",
+          "teacher": "Полякова А. С."
+        },
+        {
+          "pair": 6,
+          "subject": "Технологии обработки информации",
+          "type": "пр. занятие",
+          "room": "4-23",
+          "teacher": "Дьячук П. П."
+        }
+      ],
+      "wednesday": [],
+      "thursday": [
+        {
+          "pair": 1,
+          "subject": "Разработка мобильного ПО",
+          "type": "пр. занятие",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=35902",
+          "teacher": "Кушнаренко А. В."
+        }
+      ],
+      "friday": [
+        {
+          "pair": 3,
+          "subject": "Технологии обработки информации",
+          "type": "лекция",
+          "room": "4-18",
+          "teacher": "Дьячук П. П."
+        },
+        {
+          "pair": 4,
+          "subject": "Технологии обработки информации",
+          "type": "пр. занятие",
+          "room": "4-01",
+          "teacher": "Дьячук П. П."
+        },
+        {
+          "pair": 5,
+          "subject": "Разработка кроссплатформенных приложений с использованием игровых движков",
+          "type": "пр. занятие",
+          "room": "4-02",
+          "teacher": "Зайцев А. С."
+        },
+        {
+          "pair": 6,
+          "subject": "Интеллектуальные системы и технологии",
+          "type": "пр. занятие",
+          "room": "4-01",
+          "teacher": "Кожин К. Д."
+        }
+      ],
+      "saturday": [
+        {
+          "pair": 4,
+          "subject": "Интеллектуальные системы и технологии",
+          "type": "лекция",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=8904",
+          "teacher": "Пятаева А. В."
+        },
+        {
+          "pair": 5,
+          "subject": "Инструментальные средства информационных систем",
+          "type": "пр. занятие",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=22118",
+          "teacher": "Кустов Д. В."
+        },
+        {
+          "pair": 6,
+          "subject": "Инструментальные средства информационных систем",
+          "type": "лекция",
+          "room": "https://e.sfu-kras.ru/course/view.php?id=22118",
+          "teacher": "Кустов Д. В."
+        }
+      ],
+      "sunday": []
+    }
+  }
+}

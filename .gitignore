@@ -1,0 +1,7 @@
+.DS_Store
+*.7z
+*.bak
+*~
+.*.kate-swp
+__pycache__/
+*.py[cod]

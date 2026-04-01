@@ -1,0 +1,175 @@
+/* ═══════════════════════════════════════════════════════
+   Portal 2 / Aperture Science — AGS Bar Stylesheet
+   GTK3 CSS for Astal/AGS status bar
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Palette ── */
+@define-color ap_void       #0d0e1a;
+@define-color ap_surface    #1a1b2e;
+@define-color ap_panel      #252640;
+@define-color ap_border     #2a2b45;
+@define-color ap_blue       #00a1e4;
+@define-color ap_orange     #ff6a00;
+@define-color ap_white      #d0d0e0;
+@define-color ap_dim        #7a7a90;
+@define-color ap_green      #00e676;
+@define-color ap_amber      #ffc107;
+@define-color ap_red        #ff3d3d;
+@define-color ap_ghost      #3a3a50;
+
+/* ── Base ── */
+* {
+    all: unset;
+    font-family: "JetBrainsMono NF", "JetBrains Mono", monospace;
+    font-size: 13px;
+}
+
+/* ── Window ── */
+window.bar {
+    background: transparent;
+}
+
+/* ── Bar Container ── */
+.bar-inner {
+    background-color: alpha(@ap_void, 0.88);
+    border-bottom: 2px solid @ap_border;
+    padding: 0 10px;
+    min-height: 32px;
+}
+
+/* ── Left / Center / Right ── */
+.bar-left,
+.bar-center,
+.bar-right {
+    padding: 0 4px;
+}
+
+/* ────────────── APERTURE LOGO ────────────── */
+.aperture-logo {
+    padding: 0 8px 0 4px;
+}
+
+.aperture-logo label {
+    color: @ap_blue;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ────────────── WORKSPACES ────────────── */
+.workspaces {
+    padding: 3px 0;
+}
+
+.ws-btn {
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    min-width: 22px;
+    transition: 150ms;
+}
+
+.ws-btn label {
+    font-size: 11px;
+    font-weight: bold;
+    color: @ap_ghost;
+}
+
+.ws-btn.occupied {
+    border-color: @ap_border;
+}
+
+.ws-btn.occupied label {
+    color: @ap_dim;
+}
+
+.ws-btn.active {
+    background-color: @ap_blue;
+    border-color: @ap_blue;
+}
+
+.ws-btn.active label {
+    color: @ap_void;
+}
+
+.ws-btn:hover {
+    background-color: alpha(@ap_blue, 0.15);
+    border-color: alpha(@ap_blue, 0.4);
+}
+
+.ws-btn:hover label {
+    color: @ap_blue;
+}
+
+.ws-btn.active:hover {
+    background-color: @ap_blue;
+}
+
+.ws-btn.active:hover label {
+    color: @ap_void;
+}
+
+/* ────────────── CLOCK ────────────── */
+.clock {
+    padding: 0 8px;
+}
+
+.clock-time {
+    color: @ap_white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.clock-sep {
+    color: @ap_ghost;
+    font-size: 12px;
+}
+
+.clock-date {
+    color: @ap_dim;
+    font-size: 12px;
+}
+
+/* ────────────── FACILITY STATUS ────────────── */
+.facility-status {
+    color: @ap_green;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0 4px;
+}
+
+/* ────────────── SYSTEM MODULES ────────────── */
+.module {
+    padding: 2px 4px;
+}
+
+.module-icon {
+    color: @ap_blue;
+    font-size: 15px;
+}
+
+.module-value {
+    color: @ap_white;
+    font-size: 12px;
+}
+
+/* ── Battery States ── */
+.battery.low .module-icon,
+.battery.low .module-value {
+    color: @ap_orange;
+}
+
+.battery.critical .module-icon,
+.battery.critical .module-value {
+    color: @ap_red;
+}
+
+.battery.charging .module-icon {
+    color: @ap_green;
+}
+
+/* ────────────── DIVIDER ────────────── */
+.divider {
+    color: @ap_border;
+    font-size: 14px;
+    padding: 0 1px;
+}

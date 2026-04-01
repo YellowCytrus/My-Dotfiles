@@ -1,0 +1,204 @@
+/*****----- Portal 2 / Aperture Science Theme -----*****/
+
+* {
+    font:                        "JetBrainsMono NF 11";
+
+    ap-void:                     #0d0e1a;
+    ap-surface:                  #1a1b2e;
+    ap-panel:                    #252640;
+    ap-border:                   #2a2b45;
+    ap-blue:                     #00a1e4;
+    ap-orange:                   #ff6a00;
+    ap-white:                    #d0d0e0;
+    ap-dim:                      #7a7a90;
+    ap-green:                    #00e676;
+    ap-red:                      #ff3d3d;
+
+    background:                  @ap-void;
+    background-alt:              @ap-surface;
+    foreground:                  @ap-white;
+    selected:                    @ap-blue;
+    active:                      @ap-green;
+    urgent:                      @ap-red;
+
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: @foreground;
+    alternate-active-background: transparent;
+    alternate-active-foreground: @foreground;
+    alternate-urgent-background: @urgent;
+    alternate-urgent-foreground: @foreground;
+    lightbg:                     rgba(0, 0, 0, 0);
+    separatorcolor:              @ap-border;
+    outline:                     transparent;
+    border-color:                @ap-border;
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       680px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    border-radius:               4px;
+    border:                      2px solid;
+    border-color:                @ap-border;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     8px;
+    padding:                     14px 16px;
+    background-color:            @ap-surface;
+    text-color:                  @foreground;
+    border:                      0 0 2px 0;
+    border-color:                @ap-border;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "QUERY //";
+    background-color:            inherit;
+    text-color:                  @ap-blue;
+    font:                        "JetBrainsMono NF Bold 11";
+}
+
+entry {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "enter search parameters...";
+    placeholder-color:           @ap-dim;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       10;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     2px;
+    padding:                     8px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     12px;
+    padding:                     8px 12px;
+    border-radius:               3px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element normal.urgent {
+    background-color:            @ap-red;
+    text-color:                  @ap-void;
+}
+
+element alternate.urgent {
+    background-color:            @ap-red;
+    text-color:                  @ap-void;
+}
+
+element normal.active {
+    background-color:            transparent;
+    text-color:                  @ap-green;
+}
+
+element alternate.active {
+    background-color:            transparent;
+    text-color:                  @ap-green;
+}
+
+element selected.normal {
+    background-color:            @ap-blue;
+    text-color:                  @ap-void;
+}
+
+element selected.urgent {
+    background-color:            @ap-orange;
+    text-color:                  @ap-void;
+}
+
+element selected.active {
+    background-color:            @ap-blue;
+    text-color:                  @ap-void;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        28px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
+    padding:                     4px 8px;
+}
+
+textbox {
+    padding:                     10px 12px;
+    border-radius:               3px;
+    background-color:            @ap-surface;
+    text-color:                  @ap-dim;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+error-message {
+    padding:                     12px;
+    border-radius:               4px;
+    background-color:            @background;
+    text-color:                  @ap-red;
+}

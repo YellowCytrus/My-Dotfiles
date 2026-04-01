@@ -1,0 +1,20 @@
+[package]
+name = "sfu-schedule"
+version = "0.1.0"
+edition = "2021"
+description = "SFU Schedule Viewer for Waybar"
+authors = ["cytr"]
+
+[dependencies]
+gtk4 = "0.9"
+gtk4-layer-shell = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+dirs = "5.0"
+
+[profile.release]
+strip = true
+lto = true
+opt-level = "z"
+
