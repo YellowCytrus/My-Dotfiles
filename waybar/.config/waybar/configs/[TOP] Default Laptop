@@ -1,0 +1,192 @@
+{
+    "layer": "top",
+    "disable-status-notifier": true,
+    "position": "top",
+    "height": 36,
+    "spacing": 6,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    // Лево: часы + уведомления + разделитель
+    "modules-left": [
+        "custom/left-padding",
+        "clock",
+        "custom/notification",
+        "custom/schedule",
+        "custom/separator"
+    ],
+    // Центр: рабочие столы
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    // Право: остальное + отступ
+    "modules-right": [
+        "tray",
+        "custom/separator",
+        "bluetooth",
+        "network",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "battery",
+        "custom/power",
+        "custom/right-padding"
+    ],
+    // === ОТСТУПЫ ===
+    "custom/left-padding": {
+        "format": " ",
+        "tooltip": false
+    },
+    "custom/right-padding": {
+        "format": " ",
+        "tooltip": false
+    },
+    // === ЧАСЫ ===
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%d.%m.%Y}",
+        "tooltip-format": "<big>{:%A, %B %d}</big>",
+        "interval": 1
+    },
+    // === УВЕДОМЛЕНИЯ ===
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "",
+            "dnd-notification": " ",
+            "dnd-none": "󰂛",
+            "inhibited-notification": " ",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": " ",
+            "dnd-inhibited-none": " "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "escape": true
+    },
+    // === РАЗДЕЛИТЕЛЬ ===
+    "custom/separator": {
+        "format": "│",
+        "tooltip": false
+    },
+    // === РАБОЧИЕ СТОЛЫ (ВСЕГДА 6) ===
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{icon} {windows}",
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "class<kitty>": "",
+            "class<firefox>": "",
+            "class<obsidian>": "󰠮",
+            "class<org.kde.kate>": "󰈙",
+            "class<thunar>": "󰉓",
+            "class<org.ime.desktop.*>": "󰭹",
+            "class<code>": "󰨞",
+            "class<cursor>": "󰨞",
+            "class<virt-manager>": "󰢹",
+            "class<steam>": "󰓓"
+        },
+        "format-icons": {
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6","7": "7","8": "8","9": "9",
+            "active": "●",
+            "default": "○",
+            "urgent": "!"
+        },
+        "on-click": "activate",
+        "sort-by-number": true,
+        // Ключевая настройка: форсируем отображение всех рабочих столов
+        "persistent_workspaces": {
+            "1": [], "2": [], "3": [], "4": [], "5": [], "6": []
+        }
+    },
+    "custom/schedule": {
+        "format": "󰈙",
+        "tooltip": false,
+        "on-click": "/home/cytr/.config/sfu-schedule/target/release/sfu-schedule"
+    },
+    // === BLUETOOTH ===
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "",
+        "format-connected": "󰂱",
+        "tooltip": true,
+        "tooltip-format": "{num_connections} connected",
+        "on-click": "blueman-manager"
+    },
+    // === СЕТЬ ===
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "format-linked": "Linked (no IP)",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) | {ipaddr}/{cidr} | {bandwidthDownBits} down {bandwidthUpBits} up",
+        "tooltip-format-ethernet": "{ifname} | {ipaddr}/{cidr} | {bandwidthDownBits} down {bandwidthUpBits} up",
+        "tooltip-format-disconnected": "Disconnected",
+        "tooltip-format-linked": "{ifname} linked (no IP)",
+        "interval": 2,
+        "ignore": [
+            "tun*",
+            "docker*",
+            "br-*",
+            "lo",
+            "virbr*",
+            "tailscale*",
+            "wg*",
+            "veth*"
+        ]
+    },
+    // === ГРОМКОСТЬ ===
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    // === CPU ===
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "interval": 2,
+        "tooltip": true,
+        "on-click": "kitty -e htop",
+        "tooltip-format": "CPU: {usage}%\nТемпература: {avg_temp}°C"
+    },
+    // === ПАМЯТЬ ===
+    "memory": {
+        "format": "󰘚 {percentage}%",
+        "interval": 2,
+        "tooltip": true,
+        "on-click": "kitty -e htop"
+    },
+    // === БАТАРЕЯ ===
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-full": "󰂅 {capacity}%",
+        "states": {
+            "good": 80,
+            "warning": 35,
+            "critical": 15
+        }
+    },
+    // === ТРЕЙ ===
+    "tray": {
+        "spacing": 8,
+        "icon-size": 16
+    },
+    // === ПИТАНИЕ ===
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "wlogout --protocol layer-shell",
+        "tooltip": false
+    }
+}
