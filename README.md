@@ -8,8 +8,14 @@
 
 ```bash
 cd /path/to/My-Dotfiles
-stow --target="$HOME" hypr waybar kitty rofi sfu-schedule fastfetch ags
-# экран входа (тема SDDM в /usr/share — нужен root, только с --no-folding):
+
+# Один заход: WM/терминал/лаунчер + весь «рисовой» окружение
+stow --target="$HOME" \
+  hypr waybar kitty rofi sfu-schedule fastfetch ags \
+  fish swaync wlogout swappy btop cava matugen wallust \
+  gtk3 gtk4 kvantum qt5ct qt6ct nwg-look mimeapps autostart systemd-user quickshell
+
+# Экран входа (тема в /usr/share — нужен root, только с --no-folding):
 # sudo stow --no-folding --target=/ sddm
 ```
 
@@ -19,7 +25,7 @@ stow --target="$HOME" hypr waybar kitty rofi sfu-schedule fastfetch ags
 Проверка без изменений:
 
 ```bash
-stow -n --target="$HOME" hypr waybar
+stow -n --target="$HOME" hypr fish gtk3
 ```
 
 ## Что внутри
@@ -27,17 +33,35 @@ stow -n --target="$HOME" hypr waybar
 | Пакет | Назначение |
 |-------|------------|
 | `hypr` | Hyprland, hypridle, hyprlock, скрипты |
-| `waybar` | Панель (у вас исходники лежали в `~/dotfiles/config/waybar`, в репо зашиты как обычные файлы) |
+| `waybar` | Панель |
 | `kitty` | Терминал |
-| `rofi` | Лаунчер и темы (симлинк `.current_wallpaper` не переносился) |
+| `rofi` | Лаунчер и темы |
 | `sfu-schedule` | Расписание SFU: код + `schedule.json` без `target/`, `.venv`, `*.7z` |
-| `fastfetch` | Быстрый вывод инфо о системе |
-| `ags` | Минимальная папка конфига AGS |
-| `sddm` | Тема **`simple_sddm_2`** для SDDM (QML + ассеты + **видео-фон** `Cyberpunk_2077.mp4`) → **`sudo stow --no-folding --target=/ sddm`**. Подробности в [`sddm/README.md`](sddm/README.md). |
+| `fastfetch` | Инфо о системе |
+| `ags` | AGS |
+| `fish` | Fish shell (`~/.config/fish`) |
+| `swaync` | Уведомления (иконки, темы, `config.json`) |
+| `wlogout` | Меню выхода |
+| `swappy` | Скриншоты |
+| `btop` | Монитор ресурсов |
+| `cava` | Визуализатор аудио |
+| `matugen` | Генерация тем из обоев |
+| `wallust` | Цвета для тулчейна обоев |
+| `gtk3` | `~/.config/gtk-3.0` |
+| `gtk4` | `~/.config/gtk-4.0` |
+| `kvantum` | `~/.config/Kvantum` |
+| `qt5ct` / `qt6ct` | Внешний вид Qt |
+| `nwg-look` | Настройки внешнего вида GTK |
+| `mimeapps` | `~/.config/mimeapps.list` |
+| `autostart` | `~/.config/autostart` |
+| `systemd-user` | `~/.config/systemd/user` (в т.ч. `jarvis.service`, wants для PipeWire; см. битые симлинки ниже) |
+| `quickshell` | 16× `*.qml` из корня `~/.config` (конфиг Quickshell) |
+| `sddm` | Тема **`simple_sddm_2`** → **`sudo stow --no-folding --target=/ sddm`**. См. [`sddm/README.md`](sddm/README.md). |
 
-Исключено намеренно: виртуальные окружения, Rust `target/`, архивы `*.7z`, вложенный `.git` у расписания.
+При копировании из системы убран вложенный `.git` у `swaync`, чтобы не тянуть submodule.
 
 ## Примечания
 
 - Пути вида `/home/cytr/...` в конфигах при переносе на другую машину нужно поправить вручную.
 - Для `sfu-schedule` после клонирования: свой `uv sync` / `cargo build` локально, если нужны бинарники.
+- **`systemd-user`:** если какой‑то `.service` в `*.wants` указывал на несуществующий юнит (не установлен пакет), симлинк может быть «битым» — это нормально до `systemctl --user daemon-reload` / установки соответствующего ПО.

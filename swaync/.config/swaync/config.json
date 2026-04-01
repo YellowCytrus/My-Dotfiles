@@ -1,0 +1,71 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "cssPriority": "user",
+  "control-center-margin-top": 10,
+  "control-center-margin-right": 10,
+  "notification-window-width": 380,
+  "control-center-width": 400,
+  "control-center-height": 860,
+  "timeout": 6,
+  "timeout-low": 3,
+  "timeout-critical": 0,
+  "fit-to-screen": false,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "script-fail-notify": false,
+  "scripts": {
+    "sound-normal": {
+      "exec": "pw-play ~/.local/share/sounds/portal2/stereo/notification-normal.ogg",
+      "urgency": "Normal"
+    },
+    "sound-low": {
+      "exec": "pw-play ~/.local/share/sounds/portal2/stereo/notification-low.ogg",
+      "urgency": "Low"
+    },
+    "sound-critical": {
+      "exec": "pw-play ~/.local/share/sounds/portal2/stereo/notification-critical.ogg",
+      "urgency": "Critical"
+    }
+  },
+
+
+  "widgets": [
+    "title",
+    "dnd",
+    "buttons-grid",
+    "mpris",
+    "notifications"
+  ],
+
+  "widget-config": {
+    "title": {
+      "text": "NOTIFICATION LOG",
+      "clear-all-button": true,
+      "button-text": "CLEAR"
+    },
+    "dnd": {
+      "text": "DO NOT DISTURB"
+    },
+    "buttons-grid": {
+      "actions": [
+        { "label": "Power", "command": "wlogout --protocol layer-shell" },
+        { "label": "Lock", "command": "hyprlock" },
+        { "label": "Exit", "command": "hyprctl dispatch exit" },
+        { "label": "Airplane", "command": "~/.config/hypr/scripts/AirplaneMode.sh" },
+        { "label": "Mute", "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle" }
+      ]
+    },
+    "mpris": {
+      "image-size": 64,
+      "image-radius": 10
+    }
+  }
+}
+

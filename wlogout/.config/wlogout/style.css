@@ -1,0 +1,85 @@
+/* Portal 2 / Aperture Science — Wlogout Theme */
+/* FACILITY SHUTDOWN PROTOCOL */
+
+* {
+    background-image: none;
+    font-size: 18px;
+    font-family: "JetBrainsMono NF", monospace;
+}
+
+window {
+    background-color: rgba(13, 14, 26, 0.85);
+}
+
+button {
+    border-radius: 4px;
+    margin: 8px;
+    color: #d0d0e0;
+    background-color: rgba(26, 27, 46, 0.9);
+    border: 2px solid #2a2b45;
+    outline-style: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    box-shadow: none;
+    text-shadow: none;
+    transition: all 0.15s ease;
+}
+
+button:hover, button:focus {
+    background-color: rgba(0, 161, 228, 0.12);
+    border-color: #00a1e4;
+    color: #00a1e4;
+    background-size: 28%;
+    transition: all 0.15s ease;
+}
+
+button span {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+#lock:hover, #lock:focus {
+    border-color: #00a1e4;
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+#logout:hover, #logout:focus {
+    border-color: #ffc107;
+}
+
+#suspend {
+    background-image: image(url("./icons/sleep.png"));
+}
+#suspend:hover, #suspend:focus {
+    border-color: #7a7a90;
+}
+
+#shutdown {
+    background-image: image(url("./icons/power.png"));
+}
+#shutdown:hover, #shutdown:focus {
+    background-color: rgba(255, 61, 61, 0.1);
+    border-color: #ff3d3d;
+    color: #ff3d3d;
+}
+
+#reboot {
+    background-image: image(url("./icons/restart.png"));
+}
+#reboot:hover, #reboot:focus {
+    border-color: #ff6a00;
+    color: #ff6a00;
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.png"));
+}
+#hibernate:hover, #hibernate:focus {
+    border-color: #7a7a90;
+}

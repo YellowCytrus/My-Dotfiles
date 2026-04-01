@@ -1,0 +1,28 @@
+# User-level systemd service (recommended for desktop use)
+# Install: mkdir -p ~/.config/systemd/user && cp jarvis-user.service ~/.config/systemd/user/jarvis.service
+# Enable: systemctl --user enable jarvis
+# Start: systemctl --user start jarvis
+
+[Unit]
+Description=JARVIS Personal AI Assistant
+Documentation=https://github.com/cytr/jarvis
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/jarvis-daemon
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=3
+
+# Environment
+Environment=DOTNET_ENVIRONMENT=Production
+WorkingDirectory=%h/.jarvis
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=jarvis
+
+[Install]
+WantedBy=default.target
